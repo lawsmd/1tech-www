@@ -42,9 +42,9 @@ Pushes to `main` trigger a Cloudflare Pages build. Custom domain: `1tech.us`. Th
 
 ## Contact form
 
-The form on `/contact.html` POSTs to `https://formsubmit.co/hello@1tech.us`. After submit, FormSubmit redirects the visitor to `https://1tech.us/thanks.html` (the `_next` hidden field). First-ever submission to a new FormSubmit endpoint triggers a one-time confirmation at `hello@1tech.us`; subsequent submissions deliver straight through.
+The form on `/contact.html` POSTs to `https://api.web3forms.com/submit` with an `access_key` hidden field tied to a Web3Forms account whose destination email is `hello@1tech.us`. After submit, Web3Forms redirects the visitor to `https://1tech.us/thanks.html` (the `redirect` hidden field). The access key is public-by-design (visible in page source); Web3Forms enforces abuse limits server-side, and the key is tied to the destination email so a copied key still delivers to the same inbox.
 
-If FormSubmit ever needs to be replaced, the migration path is a Cloudflare Pages Function calling MailChannels.
+Free tier: 250 submissions/month, with email warnings at 90% and 100% of quota. Public status page: <https://status.web3forms.com/>. If Web3Forms ever needs to be replaced, the documented escape hatch is a Cloudflare Pages Function calling a transactional-email service (Resend's free 3000/month tier is the modern default).
 
 ## Operator
 
