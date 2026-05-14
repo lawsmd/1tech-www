@@ -278,4 +278,32 @@ main.prose {
 @media (max-width: 600px) {
   .site-nav { gap: 1.25rem; }
   main.prose { padding: 0.5rem 0 1.5rem; }
+
+  body { padding: 1rem 0.5rem; }
+
+  .wordmark {
+    font-family: "Courier New", "Consolas", "Menlo", monospace;
+    font-size: 9px;
+    letter-spacing: 0;
+    -webkit-font-smoothing: none;
+    text-rendering: geometricPrecision;
+  }
+
+  .brand-mark pre { display: none; }
+  .brand-mark {
+    display: inline-block;
+    border: 1px solid var(--fg);
+    padding: 0.3rem 0.85rem;
+    font-family: var(--mono);
+    font-size: 0.95rem;
+    line-height: 1.2;
+  }
+  .brand-mark::before { content: "1tech"; }
+
+  .hero { gap: 1.25rem; }
+  .site-footer {
+    margin-top: 1rem;
+    font-size: 0.75rem;
+  }
+  .site-footer p { margin: 0.15rem 0; }
 }
