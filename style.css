@@ -76,19 +76,21 @@ body {
   width: 100%;
 }
 
-/* Wordmark + tagline share a width: the grid column is sized to the pre's
-   intrinsic width (its longest line, which can't break), and the tagline
-   wraps within that column. */
+/* Wordmark + tagline stacked, both centered. The tagline's max-width
+   roughly matches the wordmark image's ceiling so it wraps the same way
+   the old <pre>-driven layout did. */
 .wordmark-group {
-  display: grid;
-  grid-template-columns: min-content;
-  justify-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: 2rem;
+  width: 100%;
 }
 
 .wordmark {
   display: block;
   width: clamp(240px, 80vw, 420px);
+  max-width: 100%;
   height: auto;
   margin: 0;
   /* CRT-style glow preserved via filter; --glow is transparent by default */
@@ -99,7 +101,8 @@ body {
   font-size: 1.15rem;
   margin: 0;
   letter-spacing: 0.02em;
-  width: 100%;          /* fill the grid column = wordmark width */
+  max-width: 420px;     /* matches the wordmark image's clamp() ceiling */
+  width: 100%;
   text-align: center;
 }
 
