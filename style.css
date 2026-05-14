@@ -87,14 +87,12 @@ body {
 }
 
 .wordmark {
-  font-family: var(--mono);
-  font-size: clamp(0.55rem, 2.2vw, 1.05rem);
-  line-height: 1;
+  display: block;
+  width: clamp(240px, 80vw, 420px);
+  height: auto;
   margin: 0;
-  white-space: pre;
-  color: var(--fg);
-  /* CRT-style glow — set via --glow in the palette block; transparent on white */
-  text-shadow: 0 0 6px var(--glow);
+  /* CRT-style glow preserved via filter; --glow is transparent by default */
+  filter: drop-shadow(0 0 6px var(--glow));
 }
 
 .tagline {
@@ -278,16 +276,6 @@ main.prose {
 @media (max-width: 600px) {
   .site-nav { gap: 1.25rem; }
   main.prose { padding: 0.5rem 0 1.5rem; }
-
-  body { padding: 1rem 0.5rem; }
-
-  .wordmark {
-    font-family: "Courier New", "Consolas", "Menlo", monospace;
-    font-size: 9px;
-    letter-spacing: 0;
-    -webkit-font-smoothing: none;
-    text-rendering: geometricPrecision;
-  }
 
   .brand-mark pre { display: none; }
   .brand-mark {
