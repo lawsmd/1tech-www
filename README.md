@@ -14,4 +14,4 @@ Open `http://localhost:8000/`.
 
 ## About 1tech
 
-1tech LLC is a solo consultancy in Wise County, Virginia, building custom software for small-town and Appalachian organizations. The full business and technical doc library lives in a separate repo.
+1tech LLC is a solo consultancy in Wise County, Virginia, building custom software for small-town and Appalachian organizations.
