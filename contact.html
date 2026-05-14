@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact — 1tech</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="subpage">
+
+  <header class="subpage-header">
+    <a class="brand-mark" href="index.html" aria-label="home"><pre>┌─ 1tech ─┐
+└─────────┘</pre></a>
+
+    <nav class="site-nav" aria-label="primary">
+      <a href="about.html">about</a>
+      <a href="work.html">work</a>
+      <a href="legal/">legal</a>
+    </nav>
+  </header>
+
+  <main class="prose">
+    <h1 class="page-title">Contact</h1>
+    <hr class="page-title-rule">
+
+    <p>If you've got something you'd like to talk through, send a note. We'll get back to you.</p>
+
+    <form class="contact-form" action="https://formsubmit.co/hello@1tech.us" method="POST">
+      <input type="hidden" name="_subject" value="New 1tech contact form submission">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://1tech.us/thanks.html">
+      <input type="text" name="_honey" class="honeypot" tabindex="-1" autocomplete="off">
+
+      <div>
+        <label for="name">Your name</label>
+        <input id="name" type="text" name="name" required autocomplete="name">
+      </div>
+
+      <div>
+        <label for="reach">Best way to reach you back</label>
+        <input id="reach" type="text" name="reach" placeholder="email, phone, or both" required>
+      </div>
+
+      <div>
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="6" required></textarea>
+      </div>
+
+      <div class="cta-row">
+        <button type="submit" class="cta">send</button>
+      </div>
+    </form>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 1tech LLC &middot; Wise County, Virginia</p>
+    <p>1tech.us &middot; hello@1tech.us</p>
+  </footer>
+
+</body>
+</html>

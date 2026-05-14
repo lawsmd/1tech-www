@@ -1,0 +1,281 @@
+/* ─── palette ─────────────────────────────────────────────────────────────
+   Swap the four colour values below to try different palettes.
+     white (current) : --fg #ffffff  --accent #cccccc  --muted-rgb 255,255,255  --glow transparent
+     amber           : --fg #ffb000  --accent #ffd060  --muted-rgb 255,176,0    --glow rgba(255,176,0,.35)
+     phosphor green  : --fg #33ff66  --accent #88ff88  --muted-rgb 51,255,102   --glow rgba(51,255,102,.30)
+     desaturated cyan: --fg #88c8d8  --accent #b8e8f0  --muted-rgb 136,200,216  --glow rgba(136,200,216,.30)
+   Background stays #0d0d0d in every palette unless we decide to flip light/dark.
+   ──────────────────────────────────────────────────────────────────────── */
+:root {
+  --bg:        #0d0d0d;
+  --fg:        #ffffff;
+  --accent:    #cccccc;
+  --muted-rgb: 255, 255, 255;
+  --muted:     rgba(var(--muted-rgb), 0.4);
+  --glow:      transparent;
+
+  --mono: ui-monospace, "Cascadia Mono", "JetBrains Mono",
+          "Consolas", "Menlo", "Courier New", monospace;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--mono);
+  min-height: 100vh;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 1rem;
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* ─── top nav ─── */
+.site-nav {
+  display: flex;
+  gap: 2.5rem;
+  justify-content: center;
+  padding: 0.5rem 0 1rem;
+  width: 100%;
+  letter-spacing: 0.04em;
+}
+.site-nav a {
+  color: var(--fg);
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 0.25rem 0.25rem;
+  border-bottom: 1px solid transparent;
+}
+.site-nav a:hover,
+.site-nav a:focus-visible {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+  outline: none;
+}
+
+/* ─── hero ─── */
+.hero {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  max-width: 720px;
+  width: 100%;
+}
+
+/* Wordmark + tagline share a width: the grid column is sized to the pre's
+   intrinsic width (its longest line, which can't break), and the tagline
+   wraps within that column. */
+.wordmark-group {
+  display: grid;
+  grid-template-columns: min-content;
+  justify-items: center;
+  gap: 2rem;
+}
+
+.wordmark {
+  font-family: var(--mono);
+  font-size: clamp(0.55rem, 2.2vw, 1.05rem);
+  line-height: 1;
+  margin: 0;
+  white-space: pre;
+  color: var(--fg);
+  /* CRT-style glow — set via --glow in the palette block; transparent on white */
+  text-shadow: 0 0 6px var(--glow);
+}
+
+.tagline {
+  font-size: 1.15rem;
+  margin: 0;
+  letter-spacing: 0.02em;
+  width: 100%;          /* fill the grid column = wordmark width */
+  text-align: center;
+}
+
+.cta {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  color: var(--fg);
+  text-decoration: none;
+  border: 1px solid var(--fg);
+  font-family: var(--mono);
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  background: transparent;
+  transition: background-color 0.15s, color 0.15s;
+}
+.cta:hover,
+.cta:focus-visible {
+  background: var(--fg);
+  color: var(--bg);
+  outline: none;
+}
+
+/* ─── footer ─── */
+.site-footer {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 2rem;
+  width: 100%;
+  letter-spacing: 0.02em;
+}
+.site-footer p { margin: 0.25rem 0; }
+
+/* ─── home-page wordmark home-link wrap ─── */
+.wordmark-home {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ─── subpage chrome ─── */
+.subpage-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.5rem 0 1.5rem;
+  width: 100%;
+}
+
+.brand-mark {
+  display: inline-block;
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.brand-mark pre {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 0.9rem;
+  line-height: 1.1;
+  white-space: pre;
+}
+.brand-mark:hover,
+.brand-mark:focus-visible {
+  color: var(--accent);
+  outline: none;
+}
+
+main.prose {
+  flex: 1;
+  width: 100%;
+  max-width: 60ch;
+  text-align: left;
+  align-self: center;
+  padding: 1rem 0 2rem;
+  font-family: var(--mono);
+}
+.prose .page-title {
+  font-family: var(--mono);
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0;
+  text-align: center;
+  letter-spacing: 0.04em;
+}
+.prose .page-title-rule {
+  border: none;
+  border-top: 1px solid var(--muted);
+  width: 8rem;
+  margin: 1rem auto 2.5rem;
+}
+.prose h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 2.5em 0 0.5em;
+  letter-spacing: 0.01em;
+  text-align: center;
+}
+.prose p {
+  margin: 1.1em 0;
+  line-height: 1.7;
+}
+.prose ul, .prose ol {
+  margin: 1.1em 0;
+  padding-left: 1.6em;
+  line-height: 1.7;
+}
+.prose li { margin: 0.5em 0; }
+.prose a {
+  color: var(--fg);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+.prose a:hover,
+.prose a:focus-visible {
+  color: var(--accent);
+  outline: none;
+}
+.prose em { color: var(--muted); font-style: normal; }
+.cta-row {
+  text-align: center;
+  margin-top: 3em;
+}
+
+/* ─── contact form ─── */
+.contact-form {
+  margin: 2em 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
+}
+.contact-form label {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.5em;
+  color: var(--fg);
+}
+.contact-form input[type="text"],
+.contact-form textarea {
+  width: 100%;
+  background: transparent;
+  color: var(--fg);
+  border: 1px solid var(--muted);
+  padding: 0.65rem 0.75rem;
+  font-family: var(--mono);
+  font-size: 0.95rem;
+  line-height: 1.45;
+  border-radius: 0;
+}
+.contact-form input[type="text"]::placeholder,
+.contact-form textarea::placeholder {
+  color: var(--muted);
+}
+.contact-form input[type="text"]:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--fg);
+}
+.contact-form textarea {
+  resize: vertical;
+  min-height: 8em;
+}
+.contact-form .honeypot {
+  display: none;
+}
+.contact-form button.cta {
+  cursor: pointer;
+}
+
+/* ─── small screens ─── */
+@media (max-width: 600px) {
+  .site-nav { gap: 1.25rem; }
+  main.prose { padding: 0.5rem 0 1.5rem; }
+}
